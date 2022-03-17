@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: simple-app
+  name: simple-app-deployment
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-app
+  template: 
+    metadata: 
+      labels: 
+        app: simple-app
+    spec: 
+      containers: 
+        - name: simple-app
+          image: sravangcpdocker/spring-hello:1.0
+          imagePullPolicy: Always
+          ports: 
+            - containerPort: 8080
