@@ -2,20 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata: 
   labels: 
-    app: simple-app
+    app: spring-hello
   name: simple-app-deployment
 spec: 
   replicas: 1
   selector:
     matchLabels:
-      app: simple-app
+      app: spring-hello
   template: 
     metadata: 
       labels: 
-        app: simple-app
+        app: spring-hello
     spec: 
       containers: 
-        - name: simple-app
+        - name: spring-hello
           image: sravangcpdocker/spring-hello:1.0
           imagePullPolicy: Always
           ports: 
