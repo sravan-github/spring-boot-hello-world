@@ -3,7 +3,7 @@ kind: Deployment
 metadata: 
   labels: 
     app: spring-hello
-  name: simple-app-deployment
+  name: spring-hello-deployment
 spec: 
   replicas: 1
   selector:
