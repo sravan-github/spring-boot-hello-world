@@ -1,8 +1,28 @@
-node{
-  stage('Git Checkout'){
-    git 'https://github.com/mag1309/spring-boot-hello-world/'
+pipeline {
+  //agent any
+  agent {
+  docker { 
+            image 'sravangcpdocker/terraform:7'
+            args '-u root:root'
+        }
+        }
+  
+  stages {
+    stage('mvn package') {
+      steps {
+        sh '''
+            git clone https://github.com/sravan-github/spring-boot-hello-world.git
+            ls -l
+            cd spring-boot-hello-world
+            mvn package
+            '''
+         //ansiblePlaybook credentialsId: 'ansible-key1', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/mariadb.hosts', playbook: 'install-book.yml'
+      }
+    }
   }
-  stage('Compile-Package'){
-    sh 'mvn package'
-  }
+  post {
+        always {
+        	cleanWs deleteDirs: true
+        }
+    }
 }
