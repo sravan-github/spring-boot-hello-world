@@ -16,6 +16,8 @@ pipeline {
             cd spring-boot-hello-world
             mvn package
             ls -l
+            cd target
+            ls -ltr
             '''
          //ansiblePlaybook credentialsId: 'ansible-key1', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory/mariadb.hosts', playbook: 'install-book.yml'
       }
